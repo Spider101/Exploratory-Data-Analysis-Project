@@ -46,7 +46,8 @@ png("plot6.png")
 #with(annualEmissions, plot(year, emissions))
 plot <- qplot(year, emissions, color=county, geom="point", data=annualEmissions, 
               xlab="Years", ylab="Total PM2.5 Emission (Tonnes)", 
-              main="Annual Motor Vehicle PM2.5 Emission") + geom_line()
+              main="Annual Motor Vehicle PM2.5 Emission") 
+plot<- plot + geom_line() + geom_smooth(linetype="dotted", method="lm", se=F)
 print(plot)
 
 #close the png graphic device
