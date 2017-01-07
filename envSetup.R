@@ -38,5 +38,5 @@ if(length(match) == 0){
 
 dataPath <- dir("./data", full.names = T)[match]   
 
-#summaryData <- readRDS(dataPath[1])
-#sourceDescrData <- readRDS(dataPath[2])
+sourceDescrData <- readRDS(dataPath[1])
+summaryData <- readRDS(dataPath[2])
