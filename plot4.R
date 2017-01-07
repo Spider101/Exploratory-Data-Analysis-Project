@@ -46,7 +46,7 @@ png("plot4.png")
 #with(annualEmissions, plot(year, emissions))
 plot <- qplot(year, emissions, geom="point", data=annualEmissions, 
               xlab="Years", ylab="Total PM2.5 Emission (Megatonnes)", 
-              main="Annual US PM2.5 Emmission from Coal Combustion Sources") + geom_line()
+              main="Annual US PM2.5 Emission from Coal Combustion Sources") + geom_line()
 print(plot)
 
 #close the png graphic device
