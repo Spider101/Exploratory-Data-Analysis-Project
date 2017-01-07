@@ -33,7 +33,10 @@ annualEmissions <- summaryData %>%
 png("plot3.png")
 
 #with(annualEmissions, plot(year, emissions))
-plot <- qplot(year, emissions, color=type, data=annualEmissions, geom="line")
+plot <- qplot(year, emissions, color=type, data=annualEmissions, geom="point",
+              xlab="Years", ylab="Total PM2.5 Emission (Tonnes)", 
+              main="Annual PM2.5 Emission in Baltimore City") 
+plot <- plot + geom_smooth(method="lm", se = F)
 print(plot)
 
 #close the png graphic device
