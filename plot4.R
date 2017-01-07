@@ -41,7 +41,7 @@ annualEmissions <- mergedData %>%
 
 
 #open a png graphic device (default dimension are 480x480)
-#png("plot4.png")
+png("plot4.png")
 
 #with(annualEmissions, plot(year, emissions))
 plot <- qplot(year, emissions, col="purple", geom="point", data=annualEmissions, 
@@ -50,4 +50,4 @@ plot <- qplot(year, emissions, col="purple", geom="point", data=annualEmissions,
 print(plot)
 
 #close the png graphic device
-#dev.off()
+dev.off()

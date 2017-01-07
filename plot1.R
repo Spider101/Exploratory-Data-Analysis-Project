@@ -19,7 +19,7 @@ if (!exists("summaryData")){
 }
 
 #open a png graphic device (default dimension are 480x480)
-#png("plot1.png")
+png("plot1.png")
 
 #group the summary data by year and then calculate the total emmission in each
 #year and then plot the results
@@ -37,4 +37,4 @@ with(annualEmissions, plot(year, emissions, xlab = "Years",
 with(annualEmissions, points(year, emissions, pch=19, col="purple"))
 
 #close the png graphic device
-#dev.off()
+dev.off()
