@@ -4,7 +4,13 @@
 ## Author - Abhimanyu Banerjee
 ## Date Created - 1/5/2017
 
-## File Description: 
+## File Description: This script attempts to answer the question how the emission
+## levels in USA from coal combustion related sources have changed from 1999 to 
+## 2008. It does so by first finding the records which correspond to coal 
+## combustion related sources and then summating the associated emission levels 
+## recorded over the period 1999-2008 for each of the years that the observations 
+## were made. The result of the summation is then plotted to visualize any trends 
+## which can answer the question.
 
 ###############################################################################
 
@@ -30,10 +36,11 @@ coalOneRows <- with(sourceDescrData, grep("Comb.*Coal", EI.Sector))
 coalTwoRows <- with(sourceDescrData, grep("Comb.*Coal", Short.Name))
 dataSubset <- sourceDescrData[union(coalOneRows, coalTwoRows), ]
 
+#perform an inner join between the summary data and the data subset computed above
 mergedData <- inner_join(summaryData, dataSubset, by="SCC")
 
-#group the resulting data by year and then calculate the total emmission in each
-#year and then plot the results
+#group the resulting data by year and then calculate the total emission in each
+#group and then plot the results
 annualEmissions <- mergedData %>%
     group_by(year) %>%
     summarize(emissions = sum(Emissions)) %>%
@@ -43,11 +50,12 @@ annualEmissions <- mergedData %>%
 #open a png graphic device (default dimension are 480x480)
 png("plot4.png")
 
-#with(annualEmissions, plot(year, emissions))
 plot <- qplot(year, emissions, geom="point", data=annualEmissions, 
               xlab="Years", ylab="Total PM2.5 Emission (Megatonnes)", 
               main="Annual US PM2.5 Emission from Coal Combustion Sources") + geom_line()
-print(plot)
+
+#sourcing R scripts have autoprinting disabled, so have to print the plot manually
+print(plot) 
 
 #close the png graphic device
 dev.off()

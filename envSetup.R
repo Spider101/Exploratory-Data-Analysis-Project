@@ -6,8 +6,7 @@
 
 ## File Description: This is a script that sets up the environment for the other
 ## plotting scripts. It checks if the data directory exists, if not it creates
-## the directory, downloads the EPA PM2.5 dataset and unzips
-## it.
+## the directory, downloads the EPA PM2.5 dataset and unzips it.
 
 ###############################################################################
 
@@ -30,6 +29,7 @@ if(!file.exists("data")){
     unzip(dataZipPath, exdir = "./data")
 }
 
+#check for data files with .rds extension in the data directory
 match <- grep(".rds", dir("./data"))
 if(length(match) == 0){
     stop(paste("Error: Something went wrong with unzipping the dataset!",
